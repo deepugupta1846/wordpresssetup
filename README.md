@@ -76,14 +76,14 @@ sudo nano /etc/apache2/sites-available/wordpress.conf
 Add the following:
 ```
 <VirtualHost *:80>
-    ServerAdmin admin@your-domain.com
-    DocumentRoot /var/www/html/wordpress
-    ServerName your-domain.com
-    ServerAlias www.your-domain.com
-    <Directory /var/www/html/wordpress/>
+    ServerName learn.qwikxr.com
+    DocumentRoot /var/www/your_project_folder
+
+    <Directory /var/www/your_project_folder>
         AllowOverride All
         Require all granted
     </Directory>
+
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
@@ -119,37 +119,29 @@ Edit
 sudo nano /var/www/html/wp-config.php
 Add this line above /* That's all, stop editing! Happy publishing. */:
 
-php
-Copy
-Edit
+## Set FS Methid
+```bash
 define('FS_METHOD', 'direct');
+```
 
 ✅ Fix: Change Ownership and Permissions
 1️⃣ Give the Web Server Ownership of WordPress Files
 Run this command to set the correct owner (for Apache or Nginx):
 
-bash
-Copy
-Edit
+## Set Correct File and Folder Permissions
+```bash
 sudo chown -R www-data:www-data /var/www/html/
-2️⃣ Set Correct File and Folder Permissions
 
-bash
-Copy
-Edit
 sudo find /var/www/html/ -type d -exec chmod 755 {} \;  # Directories
 sudo find /var/www/html/ -type f -exec chmod 644 {} \;  # Files
-3️⃣ Give Write Permissions to WordPress Uploads & Upgrade Folders
-
-bash
-Copy
-Edit
+```
+## Give Write Permissions to WordPress Uploads & Upgrade Folders
+```bash
 sudo chmod -R 775 /var/www/html/wp-content/uploads
 sudo chmod -R 775 /var/www/html/wp-content/upgrade
-4️⃣ Restart the Web Server rr
+```
+## Restart the Web Server rr
+```bash
 For Apache:
-
-bash
-Copy
-Edit
 sudo systemctl restart apache2
+```
