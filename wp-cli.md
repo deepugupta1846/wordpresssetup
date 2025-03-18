@@ -69,8 +69,7 @@ WP-CLI (WordPress Command Line Interface) is a command-line tool for managing Wo
 
 ---
 
-6. clone wordpress theme and plugin.
-7. download wordpress :
+8. clone wordpress theme and plugin.
    ```powershell
    git clone -b feature-ec2WPSetup https://gitlab.com/Avidia/learnqwikxr.git
    ```
@@ -78,14 +77,14 @@ WP-CLI (WordPress Command Line Interface) is a command-line tool for managing Wo
 ---
 
 
-8. activate all plugin :
+9. activate all plugin :
    ```powershell
    wp plugin activate --all
    ```
 
 ---
 
-9. activate theme :
+10. activate theme :
    ```powershell
    wp theme activate geeks
    ```
